@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://dl1t5e66tb76r"]
+
+[ext_resource type="Script" path="res://scenes/object.gd" id="1_i5ggv"]
+[ext_resource type="Material" uid="uid://d1edkmafxgpkd" path="res://shaders/outline.tres" id="2_ax0qr"]
+[ext_resource type="Texture2D" uid="uid://bj0xqt5ep5a7p" path="res://assets/environment/walls/box_non-isometric.png" id="2_ypvlw"]
+[ext_resource type="Script" path="res://scripts/object_shadow.gd" id="3_xsfjj"]
+[ext_resource type="PackedScene" uid="uid://cptfvrri2xl41" path="res://scenes/dynamic_shadow.tscn" id="4_wsa0n"]
+
+[node name="Box" type="Node2D"]
+script = ExtResource("1_i5ggv")
+
+[node name="MainSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_ypvlw")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 6
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(-2, 1)
+polygon = PackedVector2Array(-6, -9, 10, -9, 10, 7, -6, 7)
+
+[node name="Shadow" type="Node2D" parent="." node_paths=PackedStringArray("shadow_creator_sprite", "shadow_creator_collision_poly")]
+light_mask = 2
+visibility_layer = 2
+z_index = -1
+script = ExtResource("3_xsfjj")
+shadow_creator_sprite = NodePath("../MainSprite")
+dynamic_shadow_scene = ExtResource("4_wsa0n")
+shadow_creator_collision_poly = NodePath("../StaticBody2D/CollisionPolygon2D")
+shadow_outline_material = ExtResource("2_ax0qr")
+shadow_color = Color(0.156863, 0.0313726, 0.176471, 1)
