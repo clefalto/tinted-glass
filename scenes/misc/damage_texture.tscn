@@ -1,0 +1,18 @@
+[gd_scene load_steps=8 format=3 uid="uid://d0xhi332n37kr"]
+
+[ext_resource type="Texture2D" uid="uid://mrvo7ukatu1r" path="res://assets/sprites/textures/3-dither.png" id="1_8nq3t"]
+[ext_resource type="Script" path="res://scripts/misc/damage_texture.gd" id="2_cdwia"]
+[ext_resource type="Texture2D" uid="uid://d1lcobll0pmf0" path="res://assets/sprites/textures/dither.png" id="3_iuhup"]
+[ext_resource type="Texture2D" uid="uid://c33qpwwjsxf73" path="res://assets/sprites/textures/x-dither.png" id="4_xxb1p"]
+[ext_resource type="Texture2D" uid="uid://b3jmx0l2x1i1t" path="res://assets/sprites/textures/polka-dither.png" id="5_uy7xn"]
+[ext_resource type="Texture2D" uid="uid://j1fwc2q12erl" path="res://assets/sprites/textures/2-dither.png" id="6_i84j7"]
+[ext_resource type="Texture2D" uid="uid://ce6jndsvfmidf" path="res://assets/sprites/textures/dither-4.png" id="7_m3cs4"]
+
+[node name="DamageTexture" type="TextureRect"]
+visible = false
+offset_right = 320.0
+offset_bottom = 180.0
+texture = ExtResource("1_8nq3t")
+stretch_mode = 1
+script = ExtResource("2_cdwia")
+damage_texture_array = Array[Texture2D]([ExtResource("3_iuhup"), ExtResource("4_xxb1p"), ExtResource("5_uy7xn"), ExtResource("6_i84j7"), ExtResource("1_8nq3t"), ExtResource("7_m3cs4")])

@@ -1,0 +1,178 @@
+[gd_scene load_steps=25 format=3 uid="uid://c8kxyeayy6mk7"]
+
+[ext_resource type="Script" path="res://scripts/enemy/enemy.gd" id="1_2q1ja"]
+[ext_resource type="Texture2D" uid="uid://cvkpfcglvn6gy" path="res://assets/sprites/enemy/enemy-Sheet.png" id="2_xfs6m"]
+[ext_resource type="Texture2D" uid="uid://ddl4l8m0bpya5" path="res://assets/sprites/enemy/enemy_possessed-Sheet.png" id="3_ufy7o"]
+[ext_resource type="Script" path="res://scripts/enemy/evil_light_cone.gd" id="4_qnq2o"]
+[ext_resource type="Texture2D" uid="uid://b0nwwdmijfh3d" path="res://assets/sprites/enemy/evil_light_cone.png" id="5_sdy0b"]
+[ext_resource type="Texture2D" uid="uid://d3l3k1wpngihe" path="res://assets/sprites/enemy/eviler_light_cone.png" id="6_pjbd5"]
+[ext_resource type="Script" path="res://scripts/enemy/enemy_shadow.gd" id="7_4c864"]
+[ext_resource type="Script" path="res://scripts/enemy/enemy_hitbox.gd" id="7_266y4"]
+[ext_resource type="PackedScene" uid="uid://cptfvrri2xl41" path="res://scenes/shadows/dynamic_shadow.tscn" id="7_ju73g"]
+[ext_resource type="Texture2D" uid="uid://dr1pkfjsxlrqj" path="res://assets/sprites/enemy/shadow_particle.png" id="8_dn2sg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c3dr8"]
+atlas = ExtResource("2_xfs6m")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w6sq5"]
+atlas = ExtResource("3_ufy7o")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gcq00"]
+atlas = ExtResource("2_xfs6m")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uxy5x"]
+atlas = ExtResource("2_xfs6m")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h8nmy"]
+atlas = ExtResource("2_xfs6m")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_88njk"]
+atlas = ExtResource("2_xfs6m")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b7dsk"]
+atlas = ExtResource("3_ufy7o")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j2jje"]
+atlas = ExtResource("3_ufy7o")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hv7ux"]
+atlas = ExtResource("3_ufy7o")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cphf2"]
+atlas = ExtResource("3_ufy7o")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tnr5u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c3dr8")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w6sq5")
+}],
+"loop": true,
+"name": &"idle_possessed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gcq00")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uxy5x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h8nmy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_88njk")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b7dsk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j2jje")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hv7ux")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cphf2")
+}],
+"loop": true,
+"name": &"walk_possessed",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_orj35"]
+size = Vector2(6, 30)
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_0mn0n"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_h44vs"]
+lifetime_randomness = 0.08
+particle_flag_disable_z = true
+directional_velocity_min = -25.92
+directional_velocity_max = 27.91
+directional_velocity_curve = SubResource("CurveXYZTexture_0mn0n")
+scale_max = 2.0
+
+[node name="Enemy" type="Node2D"]
+script = ExtResource("1_2q1ja")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_tnr5u")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="EvilLightCone" type="Node2D" parent="."]
+position = Vector2(1.98433, -9.64689)
+rotation = 1.5708
+script = ExtResource("4_qnq2o")
+damage = 3.0
+nonpossessed_light_cone_tex = ExtResource("5_sdy0b")
+possessed_light_cone_tex = ExtResource("6_pjbd5")
+
+[node name="Area2D" type="Area2D" parent="EvilLightCone"]
+position = Vector2(-33, -61)
+collision_layer = 0
+collision_mask = 13
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="EvilLightCone/Area2D"]
+position = Vector2(33, 61)
+rotation = 3.14159
+polygon = PackedVector2Array(7.62939e-06, -1, -33.0001, 59.9999, -0.000198364, 79, 32.9998, 60.0001)
+
+[node name="Sprite2D" type="Sprite2D" parent="EvilLightCone"]
+visibility_layer = 2
+z_index = -2
+position = Vector2(0, -41)
+texture = ExtResource("5_sdy0b")
+
+[node name="PointLight2D" type="PointLight2D" parent="EvilLightCone"]
+visibility_layer = 2
+position = Vector2(0, -42)
+energy = 16.0
+range_layer_min = -1
+range_item_cull_mask = 2
+texture = ExtResource("5_sdy0b")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("7_266y4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_orj35")
+
+[node name="EnemyShadow" type="Node2D" parent="." node_paths=PackedStringArray("shadow_creator_sprite", "shadow_creator_collision_shape")]
+script = ExtResource("7_4c864")
+shadow_creator_sprite = NodePath("../AnimatedSprite2D")
+dynamic_shadow_scene = ExtResource("7_ju73g")
+shadow_creator_collision_shape = NodePath("../Hitbox/CollisionShape2D")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_h44vs")
+texture = ExtResource("8_dn2sg")

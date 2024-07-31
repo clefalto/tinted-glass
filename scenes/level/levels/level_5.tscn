@@ -1,0 +1,83 @@
+[gd_scene load_steps=14 format=3 uid="uid://cuox88ijeo87d"]
+
+[ext_resource type="Script" path="res://scripts/level/level.gd" id="1_4g7vd"]
+[ext_resource type="PackedScene" uid="uid://jmq3jpybnscr" path="res://scenes/lights/light_manager.tscn" id="2_n4tch"]
+[ext_resource type="TileSet" uid="uid://deav3ofhsuedy" path="res://scenes/level/levels/default_tset.tres" id="3_nmseo"]
+[ext_resource type="PackedScene" uid="uid://cw67c53clx2ow" path="res://scenes/lights/light_source.tscn" id="4_vyxkq"]
+[ext_resource type="PackedScene" uid="uid://c8kxyeayy6mk7" path="res://scenes/enemy/enemy.tscn" id="5_p6qee"]
+[ext_resource type="Texture2D" uid="uid://7ecjrghv6myt" path="res://assets/sprites/environment/black_background.png" id="6_5scyg"]
+[ext_resource type="PackedScene" uid="uid://d0xhi332n37kr" path="res://scenes/misc/damage_texture.tscn" id="7_cyaou"]
+[ext_resource type="PackedScene" uid="uid://do63f45y6f8b7" path="res://scenes/shadows/static_shadow.tscn" id="8_gv82g"]
+[ext_resource type="PackedScene" uid="uid://b510eoqme768v" path="res://scenes/player/player.tscn" id="9_onsph"]
+[ext_resource type="PackedScene" uid="uid://dqogeqjd6fefn" path="res://scenes/player/shadow_fragment.tscn" id="10_ltm2t"]
+[ext_resource type="PackedScene" uid="uid://d4ctbc0iub56y" path="res://scenes/level/next_level_button.tscn" id="11_t7dvw"]
+[ext_resource type="PackedScene" uid="uid://cir5pyb5tu317" path="res://scenes/misc/shake_camera.tscn" id="12_qw26p"]
+
+[sub_resource type="Curve2D" id="Curve2D_p5ugg"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 72, 88, 0, 0, 0, 0, 248, 88, 0, 0, 0, 0, 248, 136, 0, 0, 0, 0, 72, 136, 0, 0, 0, 0, 72, 88)
+}
+point_count = 5
+
+[node name="Level5" type="Node2D"]
+script = ExtResource("1_4g7vd")
+
+[node name="LightManager" parent="." instance=ExtResource("2_n4tch")]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("3_nmseo")
+format = 2
+layer_0/tile_data = PackedInt32Array(1, 65536, 0, 2, 65536, 0, 3, 65536, 0, 4, 65536, 0, 5, 65536, 0, 6, 65536, 0, 7, 65536, 0, 8, 65536, 0, 9, 65536, 0, 10, 65536, 0, 11, 65536, 0, 12, 65536, 0, 13, 65536, 0, 14, 65536, 0, 15, 65536, 0, 16, 65536, 0, 17, 2, 65536, 18, 65536, 0, 65555, 131072, 1, 131091, 131072, 1, 196627, 131072, 1, 262163, 131072, 1, 327699, 131072, 1, 393235, 131072, 1, 458771, 131072, 1, 524307, 131072, 1, 589843, 131072, 1, 655361, 65536, 2, 655362, 65536, 2, 655363, 65536, 2, 655364, 65536, 2, 655365, 65536, 2, 655366, 65536, 2, 655367, 65536, 2, 655368, 65536, 2, 655369, 65536, 2, 655370, 65536, 2, 655371, 65536, 2, 655372, 65536, 2, 655373, 65536, 2, 655374, 65536, 2, 655375, 65536, 2, 655376, 65536, 2, 655377, 65536, 2, 655378, 65536, 2, 65536, 0, 1, 131072, 0, 1, 196608, 0, 1, 262144, 0, 1, 327680, 0, 1, 393216, 0, 1, 458752, 0, 1, 524288, 0, 1, 589824, 0, 1, 0, 0, 0, 19, 131072, 0, 655379, 131072, 2, 655360, 0, 2, 327685, 1, 65536, 327694, 1, 65536, 458761, 3, 65536)
+
+[node name="Enemy" parent="." instance=ExtResource("5_p6qee")]
+position = Vector2(160, 36)
+
+[node name="EvilLightCone" parent="Enemy" index="1"]
+rotation = 3.14159
+
+[node name="LightSource" parent="." instance=ExtResource("4_vyxkq")]
+position = Vector2(160, 24)
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(0, -32)
+curve = SubResource("Curve2D_p5ugg")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(72, 88)
+rotates = false
+
+[node name="Enemy" parent="Path2D/PathFollow2D" node_paths=PackedStringArray("path") instance=ExtResource("5_p6qee")]
+path = NodePath("../..")
+follow_path = true
+
+[node name="DamageTexture" parent="." instance=ExtResource("7_cyaou")]
+
+[node name="BG" type="CanvasLayer" parent="."]
+layer = -100
+
+[node name="BG" type="Sprite2D" parent="BG"]
+position = Vector2(160, 90)
+texture = ExtResource("6_5scyg")
+
+[node name="StaticShadow" parent="." instance=ExtResource("8_gv82g")]
+position = Vector2(32, 31)
+
+[node name="Player" parent="." node_paths=PackedStringArray("TEMPORARY_default_inhabited_shadow") instance=ExtResource("9_onsph")]
+position = Vector2(32, 31)
+TEMPORARY_default_inhabited_shadow = NodePath("../StaticShadow")
+
+[node name="ShadowFragment" parent="." instance=ExtResource("10_ltm2t")]
+position = Vector2(75, 104)
+
+[node name="ShadowFragment2" parent="." instance=ExtResource("10_ltm2t")]
+position = Vector2(245, 104)
+
+[node name="ShadowFragment3" parent="." instance=ExtResource("10_ltm2t")]
+position = Vector2(160, 144)
+
+[node name="NextLevelButton" parent="." instance=ExtResource("11_t7dvw")]
+visible = false
+
+[node name="Camera2D" parent="." instance=ExtResource("12_qw26p")]
+
+[editable path="Enemy"]

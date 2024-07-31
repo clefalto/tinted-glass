@@ -1,0 +1,58 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwuf6jpvvnya7"]
+
+[ext_resource type="Script" path="res://scripts/menu/restart_level_overlay.gd" id="1_f2fbh"]
+[ext_resource type="StyleBox" uid="uid://4s1cfya4yxo0" path="res://assets/sprites/ui/default_background_stylebox.tres" id="2_kq2hr"]
+
+[node name="RestartLevelOverlay" type="Control"]
+z_index = 5
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_f2fbh")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 320.0
+offset_bottom = 180.0
+color = Color(0, 0, 0, 0.498039)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 139.0
+offset_top = 62.0
+offset_right = 184.0
+offset_bottom = 75.0
+text = "dissolved..."
+
+[node name="RestartLevelButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 139.0
+offset_top = 86.0
+offset_right = 179.0
+offset_bottom = 102.0
+theme_override_styles/normal = ExtResource("2_kq2hr")
+
+[node name="Label" type="Label" parent="RestartLevelButton"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = -2.0
+offset_right = 45.0
+offset_bottom = 11.0
+text = "restart"
+
+[node name="MainMenuButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 112.0
+offset_top = 107.0
+offset_right = 213.0
+offset_bottom = 123.0
+theme_override_styles/normal = ExtResource("2_kq2hr")
+
+[node name="Label" type="Label" parent="MainMenuButton"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = -2.0
+offset_right = 45.0
+offset_bottom = 11.0
+text = "return to main menu"

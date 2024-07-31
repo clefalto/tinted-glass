@@ -1,0 +1,90 @@
+[gd_scene load_steps=15 format=3 uid="uid://uw8lwul2umf4"]
+
+[ext_resource type="Script" path="res://scripts/level/level.gd" id="1_aj54b"]
+[ext_resource type="PackedScene" uid="uid://jmq3jpybnscr" path="res://scenes/lights/light_manager.tscn" id="1_vrp31"]
+[ext_resource type="TileSet" uid="uid://deav3ofhsuedy" path="res://scenes/level/levels/default_tset.tres" id="2_k5l4c"]
+[ext_resource type="PackedScene" uid="uid://cw67c53clx2ow" path="res://scenes/lights/light_source.tscn" id="3_ev8h2"]
+[ext_resource type="PackedScene" uid="uid://c8kxyeayy6mk7" path="res://scenes/enemy/enemy.tscn" id="4_o2fpy"]
+[ext_resource type="PackedScene" uid="uid://do63f45y6f8b7" path="res://scenes/shadows/static_shadow.tscn" id="5_lm8ho"]
+[ext_resource type="PackedScene" uid="uid://b510eoqme768v" path="res://scenes/player/player.tscn" id="6_40fr6"]
+[ext_resource type="PackedScene" uid="uid://dqogeqjd6fefn" path="res://scenes/player/shadow_fragment.tscn" id="7_cl336"]
+[ext_resource type="PackedScene" uid="uid://d0xhi332n37kr" path="res://scenes/misc/damage_texture.tscn" id="8_tik8c"]
+[ext_resource type="PackedScene" uid="uid://d4ctbc0iub56y" path="res://scenes/level/next_level_button.tscn" id="9_cp8i5"]
+[ext_resource type="Texture2D" uid="uid://7ecjrghv6myt" path="res://assets/sprites/environment/black_background.png" id="10_iasb5"]
+[ext_resource type="PackedScene" uid="uid://cir5pyb5tu317" path="res://scenes/misc/shake_camera.tscn" id="12_bgl42"]
+
+[sub_resource type="Curve2D" id="Curve2D_w8mnv"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 256, 56, 0, 0, 0, 0, 56, 56, 0, 0, 0, 0, 256, 56)
+}
+point_count = 3
+
+[sub_resource type="Curve2D" id="Curve2D_c16io"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 152, 128, 0, 0, 0, 0, 64, 128, 0, 0, 0, 0, 64, 88, 0, 0, 0, 0, 152, 88, 0, 0, 0, 0, 152, 120)
+}
+point_count = 5
+
+[node name="Level6" type="Node2D"]
+script = ExtResource("1_aj54b")
+
+[node name="LightManager" parent="." instance=ExtResource("1_vrp31")]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("2_k5l4c")
+format = 2
+layer_0/tile_data = PackedInt32Array(131076, 2, 65536, 131077, 65536, 0, 131078, 65536, 0, 131079, 65536, 0, 131080, 65536, 0, 131081, 65536, 0, 131082, 65536, 0, 131083, 65536, 0, 131084, 65536, 0, 131085, 65536, 0, 131086, 65536, 0, 131087, 65536, 0, 131088, 65536, 0, 131075, 65536, 0, 589827, 65536, 2, 589828, 65536, 2, 589829, 65536, 2, 589830, 65536, 2, 589831, 65536, 2, 589832, 65536, 2, 589833, 65536, 2, 589834, 65536, 2, 589835, 65536, 2, 589836, 65536, 2, 589837, 65536, 2, 589838, 65536, 2, 589839, 65536, 2, 589840, 65536, 2, 524305, 131072, 1, 458769, 131072, 1, 393233, 131072, 1, 327697, 131072, 1, 262161, 131072, 1, 196625, 131072, 1, 196610, 0, 1, 262146, 0, 1, 327682, 0, 1, 393218, 0, 1, 458754, 0, 1, 524290, 0, 1, 589826, 0, 2, 131074, 0, 0, 131089, 131072, 0, 589841, 131072, 2, 18, 65536, 1, 19, 65536, 1, 65555, 65536, 1, 65554, 65536, 1, 131090, 65536, 1, 131091, 65536, 1, 196627, 65536, 1, 196626, 65536, 1, 262163, 65536, 1, 262162, 65536, 1, 327698, 65536, 1, 393234, 65536, 1, 393235, 65536, 1, 327699, 65536, 1, 458771, 65536, 1, 524307, 65536, 1, 524306, 65536, 1, 458770, 65536, 1, 589842, 65536, 1, 655378, 65536, 1, 589843, 65536, 1, 655379, 65536, 1, 720914, 65536, 1, 720913, 65536, 1, 655377, 65536, 1, 720915, 65536, 1, 720912, 65536, 1, 655376, 65536, 1, 655375, 65536, 1, 655374, 65536, 1, 720910, 65536, 1, 720909, 65536, 1, 720911, 65536, 1, 655373, 65536, 1, 655372, 65536, 1, 655371, 65536, 1, 655370, 65536, 1, 655369, 65536, 1, 720907, 65536, 1, 720908, 65536, 1, 720906, 65536, 1, 720905, 65536, 1, 720904, 65536, 1, 720903, 65536, 1, 720902, 65536, 1, 655366, 65536, 1, 655365, 65536, 1, 655367, 65536, 1, 655368, 65536, 1, 655364, 65536, 1, 720901, 65536, 1, 720900, 65536, 1, 720899, 65536, 1, 720898, 65536, 1, 720897, 65536, 1, 720896, 65536, 1, 655363, 65536, 1, 655362, 65536, 1, 655361, 65536, 1, 655360, 65536, 1, 589824, 65536, 1, 589825, 65536, 1, 524289, 65536, 1, 524288, 65536, 1, 458752, 65536, 1, 458753, 65536, 1, 393216, 65536, 1, 327680, 65536, 1, 327681, 65536, 1, 262145, 65536, 1, 393217, 65536, 1, 262144, 65536, 1, 196608, 65536, 1, 131072, 65536, 1, 131073, 65536, 1, 196609, 65536, 1, 65536, 65536, 1, 65537, 65536, 1, 1, 65536, 1, 0, 65536, 1, 2, 65536, 1, 3, 65536, 1, 4, 65536, 1, 5, 65536, 1, 6, 65536, 1, 7, 65536, 1, 8, 65536, 1, 65544, 65536, 1, 65543, 65536, 1, 65542, 65536, 1, 65541, 65536, 1, 65540, 65536, 1, 9, 65536, 1, 10, 65536, 1, 65539, 65536, 1, 65538, 65536, 1, 65545, 65536, 1, 65546, 65536, 1, 65547, 65536, 1, 65548, 65536, 1, 12, 65536, 1, 13, 65536, 1, 14, 65536, 1, 11, 65536, 1, 15, 65536, 1, 16, 65536, 1, 65551, 65536, 1, 65550, 65536, 1, 65552, 65536, 1, 65553, 65536, 1, 65549, 65536, 1, 17, 65536, 1, 393221, 3, 65536, 262156, 3, 65536, 458762, 1, 65536, 262151, 1, 65536)
+
+[node name="LightSource" parent="." instance=ExtResource("3_ev8h2")]
+position = Vector2(160, 94)
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_w8mnv")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(256, 56)
+rotates = false
+
+[node name="Enemy" parent="Path2D/PathFollow2D" node_paths=PackedStringArray("path") instance=ExtResource("4_o2fpy")]
+path = NodePath("../..")
+follow_path = true
+
+[node name="Path2D2" type="Path2D" parent="."]
+curve = SubResource("Curve2D_c16io")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D2"]
+position = Vector2(152, 128)
+rotates = false
+
+[node name="Enemy" parent="Path2D2/PathFollow2D" node_paths=PackedStringArray("path") instance=ExtResource("4_o2fpy")]
+path = NodePath("../..")
+follow_path = true
+
+[node name="StaticShadow" parent="." instance=ExtResource("5_lm8ho")]
+position = Vector2(256, 128)
+
+[node name="Player" parent="." node_paths=PackedStringArray("TEMPORARY_default_inhabited_shadow") instance=ExtResource("6_40fr6")]
+position = Vector2(256, 128)
+TEMPORARY_default_inhabited_shadow = NodePath("../StaticShadow")
+
+[node name="ShadowFragment" parent="." instance=ExtResource("7_cl336")]
+position = Vector2(240, 91)
+
+[node name="ShadowFragment2" parent="." instance=ExtResource("7_cl336")]
+position = Vector2(168, 136)
+
+[node name="ShadowFragment3" parent="." instance=ExtResource("7_cl336")]
+position = Vector2(96, 128)
+
+[node name="DamageTexture" parent="." instance=ExtResource("8_tik8c")]
+
+[node name="NextLevelButton" parent="." instance=ExtResource("9_cp8i5")]
+
+[node name="BG" type="CanvasLayer" parent="."]
+layer = -100
+
+[node name="BG" type="Sprite2D" parent="BG"]
+position = Vector2(160, 90)
+texture = ExtResource("10_iasb5")
+
+[node name="Camera2D" parent="." instance=ExtResource("12_bgl42")]

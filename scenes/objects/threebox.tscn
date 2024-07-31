@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://dnoyukc3k0fo3"]
+
+[ext_resource type="Texture2D" uid="uid://1irawk7ncre5" path="res://assets/sprites/environment/walls/threebox.png" id="1_1jt48"]
+[ext_resource type="Script" path="res://scripts/shadows/object.gd" id="1_euhmt"]
+[ext_resource type="Script" path="res://scripts/shadows/object_shadow.gd" id="1_t18s5"]
+[ext_resource type="PackedScene" uid="uid://cptfvrri2xl41" path="res://scenes/shadows/dynamic_shadow.tscn" id="3_5nxku"]
+
+[node name="Threebox" type="Node2D"]
+script = ExtResource("1_euhmt")
+
+[node name="MainSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_1jt48")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-8, -24, 8, -24, 8, 24, -8, 24)
+
+[node name="Shadow" type="Node2D" parent="." node_paths=PackedStringArray("shadow_creator_sprite", "shadow_creator_collision_poly")]
+z_index = -1
+script = ExtResource("1_t18s5")
+shadow_creator_sprite = NodePath("../MainSprite")
+dynamic_shadow_scene = ExtResource("3_5nxku")
+shadow_creator_collision_poly = NodePath("../StaticBody2D/CollisionPolygon2D")

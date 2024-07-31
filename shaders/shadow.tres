@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://bwqgjn76wx3l1"]
+
+[ext_resource type="Shader" path="res://shaders/shadow.gdshader" id="1_jq4cy"]
+[ext_resource type="Texture2D" uid="uid://d1lcobll0pmf0" path="res://assets/sprites/textures/dither.png" id="2_3kpww"]
+
+[resource]
+resource_local_to_scene = true
+shader = ExtResource("1_jq4cy")
+shader_parameter/color = Color(0.4, 0.345098, 0.623529, 1)
+shader_parameter/width = 1.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+shader_parameter/do_outline = false
+shader_parameter/u_dither_tex = ExtResource("2_3kpww")

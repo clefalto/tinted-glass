@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://jmq3jpybnscr"]
+
+[ext_resource type="Script" path="res://scripts/lights/light_manager.gd" id="1_nf84j"]
+
+[node name="LightManager" type="Node"]
+script = ExtResource("1_nf84j")

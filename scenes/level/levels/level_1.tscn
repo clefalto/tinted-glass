@@ -1,0 +1,93 @@
+[gd_scene load_steps=12 format=3 uid="uid://b4vxkudbd11j6"]
+
+[ext_resource type="Script" path="res://scripts/level/level.gd" id="1_b6su4"]
+[ext_resource type="PackedScene" uid="uid://jmq3jpybnscr" path="res://scenes/lights/light_manager.tscn" id="2_yxo5a"]
+[ext_resource type="PackedScene" uid="uid://cw67c53clx2ow" path="res://scenes/lights/light_source.tscn" id="3_6v1p1"]
+[ext_resource type="PackedScene" uid="uid://do63f45y6f8b7" path="res://scenes/shadows/static_shadow.tscn" id="4_4qtu5"]
+[ext_resource type="PackedScene" uid="uid://b510eoqme768v" path="res://scenes/player/player.tscn" id="6_pt5u3"]
+[ext_resource type="PackedScene" uid="uid://cir5pyb5tu317" path="res://scenes/misc/shake_camera.tscn" id="8_d1pr7"]
+[ext_resource type="Texture2D" uid="uid://7ecjrghv6myt" path="res://assets/sprites/environment/black_background.png" id="9_dipq7"]
+[ext_resource type="PackedScene" uid="uid://d4ctbc0iub56y" path="res://scenes/level/next_level_button.tscn" id="9_v27kn"]
+[ext_resource type="Script" path="res://scripts/misc/level_1_tutorial_text.gd" id="10_1yxo8"]
+[ext_resource type="Texture2D" uid="uid://dqs3w4ydpg78g" path="res://assets/sprites/arrow.png" id="11_jswlg"]
+[ext_resource type="TileSet" uid="uid://deav3ofhsuedy" path="res://scenes/level/levels/default_tset.tres" id="14_uw6kv"]
+
+[node name="Level1" type="Node2D"]
+script = ExtResource("1_b6su4")
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("14_uw6kv")
+format = 2
+layer_0/tile_data = PackedInt32Array(589828, 65536, 2, 589829, 65536, 2, 589830, 65536, 2, 589831, 65536, 2, 589832, 65536, 2, 589833, 65536, 2, 589834, 65536, 2, 589835, 65536, 2, 589836, 65536, 2, 589837, 65536, 2, 589838, 65536, 2, 589839, 65536, 2, 524304, 131072, 1, 458768, 131072, 1, 393232, 131072, 1, 327696, 131072, 1, 262160, 131072, 1, 196624, 131072, 1, 131088, 131072, 0, 131087, 65536, 0, 131086, 65536, 0, 131085, 2, 65536, 131084, 65536, 0, 131083, 65536, 0, 131082, 65536, 0, 131081, 65536, 0, 131080, 65536, 0, 131079, 65536, 0, 131078, 65536, 0, 131077, 65536, 0, 131076, 65536, 0, 196611, 0, 1, 262147, 0, 1, 327683, 0, 1, 393219, 0, 1, 458755, 0, 1, 524291, 0, 1, 589840, 131072, 2, 589827, 0, 2, 131075, 0, 0, 655360, 65536, 1, 720896, 65536, 1, 655361, 65536, 1, 720897, 65536, 1, 655362, 65536, 1, 720898, 65536, 1, 655363, 65536, 1, 720899, 65536, 1, 655364, 65536, 1, 720900, 65536, 1, 655365, 65536, 1, 720901, 65536, 1, 655366, 65536, 1, 720902, 65536, 1, 655367, 65536, 1, 720903, 65536, 1, 655368, 65536, 1, 720904, 65536, 1, 655369, 65536, 1, 720905, 65536, 1, 655370, 65536, 1, 720906, 65536, 1, 655371, 65536, 1, 720907, 65536, 1, 655372, 65536, 1, 720908, 65536, 1, 655373, 65536, 1, 720909, 65536, 1, 655374, 65536, 1, 720910, 65536, 1, 655375, 65536, 1, 720911, 65536, 1, 655376, 65536, 1, 720912, 65536, 1, 655377, 65536, 1, 720913, 65536, 1, 655378, 65536, 1, 720914, 65536, 1, 655379, 65536, 1, 720915, 65536, 1, 17, 65536, 1, 65553, 65536, 1, 131089, 65536, 1, 196625, 65536, 1, 262161, 65536, 1, 327697, 65536, 1, 393233, 65536, 1, 458769, 65536, 1, 524305, 65536, 1, 589841, 65536, 1, 18, 65536, 1, 65554, 65536, 1, 131090, 65536, 1, 196626, 65536, 1, 262162, 65536, 1, 327698, 65536, 1, 393234, 65536, 1, 458770, 65536, 1, 524306, 65536, 1, 589842, 65536, 1, 19, 65536, 1, 65555, 65536, 1, 131091, 65536, 1, 196627, 65536, 1, 262163, 65536, 1, 327699, 65536, 1, 393235, 65536, 1, 458771, 65536, 1, 524307, 65536, 1, 589843, 65536, 1, 0, 65536, 1, 65536, 65536, 1, 1, 65536, 1, 65537, 65536, 1, 2, 65536, 1, 65538, 65536, 1, 3, 65536, 1, 65539, 65536, 1, 4, 65536, 1, 65540, 65536, 1, 5, 65536, 1, 65541, 65536, 1, 6, 65536, 1, 65542, 65536, 1, 7, 65536, 1, 65543, 65536, 1, 8, 65536, 1, 65544, 65536, 1, 9, 65536, 1, 65545, 65536, 1, 10, 65536, 1, 65546, 65536, 1, 11, 65536, 1, 65547, 65536, 1, 12, 65536, 1, 65548, 65536, 1, 13, 65536, 1, 65549, 65536, 1, 14, 65536, 1, 65550, 65536, 1, 15, 65536, 1, 65551, 65536, 1, 16, 65536, 1, 65552, 65536, 1, 131072, 65536, 1, 196608, 65536, 1, 262144, 65536, 1, 327680, 65536, 1, 393216, 65536, 1, 458752, 65536, 1, 524288, 65536, 1, 589824, 65536, 1, 131073, 65536, 1, 196609, 65536, 1, 262145, 65536, 1, 327681, 65536, 1, 393217, 65536, 1, 458753, 65536, 1, 524289, 65536, 1, 589825, 65536, 1, 131074, 65536, 1, 196610, 65536, 1, 262146, 65536, 1, 327682, 65536, 1, 393218, 65536, 1, 458754, 65536, 1, 524290, 65536, 1, 589826, 65536, 1, 262150, 1, 65536, 393225, 1, 65536, 327692, 1, 65536)
+
+[node name="LightManager" parent="." instance=ExtResource("2_yxo5a")]
+
+[node name="BG" type="CanvasLayer" parent="."]
+layer = -100
+
+[node name="BG" type="Sprite2D" parent="BG"]
+position = Vector2(160, 90)
+texture = ExtResource("9_dipq7")
+
+[node name="StaticShadow" parent="." instance=ExtResource("4_4qtu5")]
+position = Vector2(86, 123)
+
+[node name="LightSource" parent="." instance=ExtResource("3_6v1p1")]
+position = Vector2(160, 61)
+
+[node name="Player" parent="." node_paths=PackedStringArray("TEMPORARY_default_inhabited_shadow") instance=ExtResource("6_pt5u3")]
+position = Vector2(86, 123)
+TEMPORARY_default_inhabited_shadow = NodePath("../StaticShadow")
+
+[node name="NextLevelButton" parent="." instance=ExtResource("9_v27kn")]
+visible = false
+offset_left = 246.0
+offset_top = 156.0
+offset_right = 310.0
+offset_bottom = 176.0
+
+[node name="Camera2D" parent="." instance=ExtResource("8_d1pr7")]
+
+[node name="TutorialText" type="Control" parent="." node_paths=PackedStringArray("monitored_start_shadow", "monitored_exit_door_tmap", "player")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("10_1yxo8")
+monitored_start_shadow = NodePath("../StaticShadow")
+monitored_exit_door_tmap = NodePath("../TileMap")
+player = NodePath("../Player")
+
+[node name="JumpLabel" type="Label" parent="TutorialText"]
+layout_mode = 0
+offset_left = 104.0
+offset_top = 149.0
+offset_right = 232.0
+offset_bottom = 162.0
+text = "click a shadow to jump to it"
+
+[node name="Sprite2D" type="Sprite2D" parent="TutorialText/JumpLabel"]
+z_index = -1
+position = Vector2(18, -26)
+rotation = 1.57079
+texture = ExtResource("11_jswlg")
+
+[node name="DoorLabel" type="Label" parent="TutorialText"]
+layout_mode = 0
+offset_left = 96.0
+offset_top = 15.0
+offset_right = 275.0
+offset_bottom = 44.0
+text = "jump to the door shadow to move on"
+autowrap_mode = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="TutorialText/DoorLabel"]
+z_index = -1
+position = Vector2(87, 105)
+rotation = 0.785397
+texture = ExtResource("11_jswlg")
+
+[node name="Sprite2D2" type="Sprite2D" parent="TutorialText/DoorLabel"]
+z_index = -1
+position = Vector2(120, 57)
+texture = ExtResource("11_jswlg")

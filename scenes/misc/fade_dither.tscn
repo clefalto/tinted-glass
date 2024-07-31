@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dspwaph7omsc7"]
+
+[ext_resource type="Shader" path="res://shaders/dither.gdshader" id="1_6a3ie"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3yb2m"]
+shader = ExtResource("1_6a3ie")
+shader_parameter/bayer_r = 2.0
+
+[node name="FadeDither" type="ColorRect"]
+material = SubResource("ShaderMaterial_3yb2m")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)

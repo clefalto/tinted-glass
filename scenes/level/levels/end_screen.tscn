@@ -1,0 +1,47 @@
+[gd_scene load_steps=3 format=3 uid="uid://bh63en15w2fmh"]
+
+[ext_resource type="Script" path="res://scenes/level/levels/end_screen.gd" id="1_rx2e3"]
+[ext_resource type="Texture2D" uid="uid://dn0pnqeliyaif" path="res://assets/sprites/ui/title.png" id="1_yu8b2"]
+
+[node name="EndScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rx2e3")
+
+[node name="Background" type="ColorRect" parent="."]
+z_index = -4
+layout_mode = 0
+offset_right = 320.0
+offset_bottom = 180.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 43.0
+offset_top = 38.0
+offset_right = 292.0
+offset_bottom = 67.0
+text = "that is all! thank you for playing aaaaaaaaaaaaaaaaa  !
+- clef <3"
+
+[node name="Title" type="TextureRect" parent="Label"]
+layout_mode = 0
+offset_left = 146.0
+offset_top = -6.0
+offset_right = 246.0
+offset_bottom = 24.0
+mouse_filter = 2
+texture = ExtResource("1_yu8b2")
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 61.0
+offset_top = 101.0
+offset_right = 266.0
+offset_bottom = 114.0
+text = "click anywhere to go back to the title screen!"

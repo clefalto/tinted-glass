@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfacb76prmjlx"]
+
+[ext_resource type="Script" path="res://scripts/misc/stackable_sound.gd" id="1_ao7om"]
+
+[node name="StackableSound" type="AudioStreamPlayer"]
+script = ExtResource("1_ao7om")

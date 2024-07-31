@@ -1,6 +1,0 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bwqgjn76wx3l1"]
-
-[ext_resource type="Shader" path="res://shaders/evil_light.gdshader" id="1_w6fkc"]
-
-[resource]
-shader = ExtResource("1_w6fkc")
